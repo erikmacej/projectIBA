@@ -14,7 +14,15 @@ public class Servlet extends HttpServlet{
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws IOException, ServletException{
-		request.getRequestDispatcher("/WEB-INF/helloIba.jsp").forward(request, response);
+	   
+        try{
+            int x = Integer.parseInt(request.getParameter("x"));
+            request.setAttribute("x", x);
+        }catch(NumberFormatException ex){
+            request.setAttribute("x", 1);
+        }    
+            
+        request.getRequestDispatcher("/WEB-INF/helloIba.jsp").forward(request, response);
 	
     }
 }
