@@ -12,6 +12,6 @@
         <property name="prefix" value="/WEB-INF/jsp/" /> 
         <property name="suffix" value=".jsp" /> 
     </bean>
-    <context:component-scan base-package="my.projekt.iba" />
+    <context:component-scan base-package="my.projekt.iba.servlets" />
    
 </beans>
