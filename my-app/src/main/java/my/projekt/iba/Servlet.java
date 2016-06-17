@@ -1,28 +1,34 @@
 package my.projekt.iba;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-/**
- * @author Erik Macej
- */
-public class Servlet extends HttpServlet{
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+ 
+ 
+@Controller
+public class Servlet{
     
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-	throws IOException, ServletException{
-	   
+    @RequestMapping("hello/{x}")
+    public String getX(@PathVariable String x,Model model){
+	       
         try{
-            int x = Integer.parseInt(request.getParameter("x"));
-            request.setAttribute("x", x);
+            int param = Integer.parseInt(x);
+            model.addAttribute("x", param);
         }catch(NumberFormatException ex){
-            request.setAttribute("x", 1);
+            model.addAttribute("x", 1);
         }    
             
-        request.getRequestDispatcher("/WEB-INF/helloIba.jsp").forward(request, response);
+        return "hello";
 	
     }
+    
+    @RequestMapping("hello")
+    public String pathWithoutParameter(Model model){
+        
+        model.addAttribute("x",1);
+        
+        return "hello";
+    }
+    
 }
