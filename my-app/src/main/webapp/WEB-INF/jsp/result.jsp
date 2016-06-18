@@ -4,7 +4,7 @@
     Author     : Erik Macej,433 744
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,9 +12,9 @@
         <title>Result</title>
     </head>
     <body>
-        <text>Meno: ${student.meno}</text><br>
-        <text>Priezvisko: ${student.priezvisko}</text><br>
-        <text>Dátum narodenia: ${student.datumNarozeni}</text><br>
-        <text>Pohlavie: ${student.pohlavi}</text><br>        
+        <text>Meno: ${student.name}</text><br>
+        <text>Priezvisko: ${student.surname}</text><br>
+        <text>Datum narodenia: <fmt:formatDate pattern="dd.MM.yyyy" value="${student.bornDate}" /></text><br>
+        <text>Pohlavie: ${student.sex}</text>
     </body>
 </html>
