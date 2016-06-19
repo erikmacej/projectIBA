@@ -13,8 +13,12 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  * @author Erik Macej
  */
-public class Student {
 
+public class Student {
+    
+    private static int count = 0; 
+    private int id;
+    
     @Length(min=1, max=60 , message="Meno musi mať dĺžku od 1 do 60 znakov")
     @Pattern(regexp="([[A-Z]ÁÄČĎÉĚÍŇOÓŘŠŤÚŮÝŽĹĽÔŔ][[a-z]áäčďžéěíĺľňóôŕřšťúýžů[A-Z]ÁÄČĎÉĚÍŇOÓŘŠŤÚŮÝŽĹĽÔŔ\\s]*)",message="Meno obsahuje zakazané znaky")
     private String name;
@@ -31,6 +35,10 @@ public class Student {
     @NotEmpty(message="Nezadané pohlavie")
     @Pattern(regexp="žena|muž",message="Zlé pohlavie môze byť len žena alebo muž")
     private String sex;
+    
+    public Student(){
+        this.id = ++this.count;
+    }
     
     public String getName() {
         return name;
@@ -62,6 +70,10 @@ public class Student {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+    
+    public int getId(){
+        return id;
     }
     
     
