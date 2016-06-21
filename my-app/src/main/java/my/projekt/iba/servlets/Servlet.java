@@ -1,13 +1,13 @@
 package my.projekt.iba.servlets;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import my.projekt.iba.service.Student;
-import my.projekt.iba.service.StudentServiceListImpl;
+import my.projekt.iba.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,12 +16,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class Servlet{
     
-    StudentServiceListImpl studentsManager = new StudentServiceListImpl(); 
+    private StudentService studentService; 
+    
+    @Autowired(required=true)
+    @Qualifier(value="studentService")
+    public void setStudentService(StudentService studentService){
+	this.studentService = studentService;
+    }
+    
     
     @RequestMapping(value={"", "list"})
     public String viewList(Model model){
  
-        model.addAttribute("students", studentsManager.getAllStudents());
+        model.addAttribute("students", studentService.getAllStudents());
         
         return "list";
     }
@@ -45,7 +52,7 @@ public class Servlet{
         if(result.hasErrors()){
             return "create";
         }else{
-            studentsManager.createStudent(student);
+            studentService.createStudent(student);
             return "redirect:list";
         }
     }
@@ -53,7 +60,7 @@ public class Servlet{
     @RequestMapping(value="delete", method= RequestMethod.POST)
     public String deleteStudent(@RequestParam("id") int id){
     
-        studentsManager.deleteStudent(id);
+        studentService.deleteStudent(id);
         return "redirect:list";
         
     }
@@ -61,7 +68,7 @@ public class Servlet{
     @RequestMapping(value="detail", method= RequestMethod.POST)
     public String detailStudent(@RequestParam("id") int id,Model model){
     
-        model.addAttribute("student",studentsManager.getStudent(id));
+        model.addAttribute("student",studentService.getStudent(id));
         return "detail";
         
     }
@@ -69,7 +76,7 @@ public class Servlet{
     @RequestMapping(value="update", method= RequestMethod.POST)
     public String updateStudent(@RequestParam("id") int id,Model model){
     
-        model.addAttribute("student",studentsManager.getStudent(id));
+        model.addAttribute("student",studentService.getStudent(id));
         model.addAttribute("id", id);
         return "update";
         
@@ -86,7 +93,7 @@ public class Servlet{
             model.addAttribute("student", student);
             return "update";
         }else{
-            studentsManager.updateStudent(id,student);
+            studentService.updateStudent(id,student);
             return "redirect:list";
         }
         
