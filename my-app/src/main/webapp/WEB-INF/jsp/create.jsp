@@ -11,49 +11,53 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Form</title>
+        
         <style>
-            .error {
-                color: #ff0000;
+            label.error {
+                color: red;
             }
-
-            .errorblock {
-                color: #000;
-                background-color: #ffEEEE;
-                border: 3px solid #ff0000;
-                padding: 8px;
-                margin: 16px;
+            input{
+                color:black;
             }
         </style>
+          
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+        
+        <!--!jQuery-->
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        
+        <!--datepicker-->
+        <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+        
+        <script type="text/javascript" src="resources/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="resources/formularForm.js"></script>
+             
     </head>
     <body>
-        <form:form method="POST" commandName="student" action="${pageContext.request.contextPath}/create">
-	    <form:errors path="*" cssClass="errorblock" element="div" />
-		<table>
-		    <tr>
-			<td>Meno :</td>
-			<td><form:input path="name" /></td>
-			<td><form:errors path="name" cssClass="error" /></td>
-		    </tr>
-		    <tr>
-			<td>Priezvisko :</td>
-			<td><form:input path="surname" /></td>
-			<td><form:errors path="surname" cssClass="error" /></td>
-		    </tr>
-                    <tr>
-			<td>Datum narozeni :</td>
-			<td><form:input path="bornDate" /></td>
-			<td><form:errors path="bornDate" cssClass="error" /></td>
-		    </tr>
-                    <tr>
-			<td>Pohlavie :</td>
-			<td><form:input path="sex" /></td>
-			<td><form:errors path="sex" cssClass="error" /></td>
-		    </tr>
-		    <tr>
-			<td colspan="3"><input type="submit" value="Potvrď"/></td>
-		    </tr>
-		</table>
-	</form:form>
+        <form:form id="formularForm" method="POST" commandName="student" action="${pageContext.request.contextPath}/create">
+            <p>
+                <label for="name">Meno :</label>
+		<form:input path="name" id="name" name="name" type="text"/>
+            </p>
+            <p>
+		<label for="surname">Priezvisko :</label>
+		<form:input path="surname" id="surname" name="surname" type="text"/>
+            </p>
+            <p>
+                <label for="datepicker">Datum narozeni :</label>
+                <form:input path="bornDate" id="datepicker" name="datepicker" />
+            </p>
+            <p>
+                <label for="sex">Pohlavie :</label>
+                <form:select path="sex" id="sex" name="sex" type="text">
+                    <form:option value="žena">žena</form:option>
+                    <form:option value="muž">muž</form:option>
+                </form:select>    
+            </p>
+            <p>
+                <input type="submit" value="Potvrď"/>
+            </p>
+	</form:form>        
             <form action="${pageContext.request.contextPath}/list">
                 <input type="submit" value="Späť">
             </form>
