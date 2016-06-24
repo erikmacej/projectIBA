@@ -2,7 +2,7 @@ $(document).ready(function() {
     $.validator.addMethod("regex", function(value, element, regexpr) {          
         return regexpr.test(value);
     }, "Meno obsahuje nedovolené znaky");
-      
+    
     $("#formularForm").validate({
         rules:{
             name:{
@@ -17,11 +17,10 @@ $(document).ready(function() {
                 maxlength:60,
                 regex: /^[a-zA-Z ]+$/ 
             },
-            datepicker:{
-                date:true,
-                required:true
-            },
-            sex:"required"
+            bornDate:{
+                required:true,
+                dpDate:true
+            }
         },
         messages:{
             name:{
@@ -34,18 +33,19 @@ $(document).ready(function() {
                 minlength:"Priezvisko musí obsahovať minimálne jeden znak",
                 maxlength:"Priezvisko nesmie obsahovať viac ako 60 znakov"
             },
-            datepicker:{
-                date:"Zly format",
-                required:"tata"
-            },
-            sex:"Prosim zadajte pohlavie"
+            bornDate:{
+                required:"Nezadaný dátum",
+            
             }
+        }
     });
    
-    $( "#datepicker" ).datepicker({
-            changeYear:true,
-            maxDate:0,
-            onClose: function() {$(this).valid();}
-    });            
+    $(function() {
+        $( "#datepicker" ).datepicker({
+           dateFormat:"dd/mm/yy",
+           changeYear:true,
+           maxDate:0
+        });
+    });           
     
 });

@@ -29,6 +29,7 @@
         <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
         
         <script type="text/javascript" src="resources/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="resources/jquery.ui.datepicker.validation.js"></script>
         <script type="text/javascript" src="resources/formularForm.js"></script>
                 
     </head>
@@ -36,19 +37,19 @@
         <form:form id="formularForm" method="POST" commandName="student" action="${pageContext.request.contextPath}/updatesubmit?id=${id}">
 	    <p>
                 <label for="name">Meno :</label>
-		<form:input path="name" id="name" name="name" type="text"/>
+		<form:input path="name" type="text"/>
             </p>
             <p>
 		<label for="surname">Priezvisko :</label>
-		<form:input path="surname" id="surname" name="surname" type="text"/>
+		<form:input path="surname" type="text"/>
             </p>
             <p>
                 <label for="datepicker">Datum narozeni :</label>
-                <form:input path="bornDate" id="datepicker" name="datepicker" />
+                <form:input path="bornDate" id="datepicker" />
             </p>
             <p>
                 <label for="sex">Pohlavie :</label>
-                <form:select path="sex" id="sex" name="sex" type="text">
+                <form:select path="sex" type="text">
                     <form:option value="žena">žena</form:option>
                     <form:option value="muž">muž</form:option>
                 </form:select>    
