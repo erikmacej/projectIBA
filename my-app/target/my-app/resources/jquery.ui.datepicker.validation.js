@@ -15,7 +15,7 @@ if ($.fn.validate) {
 	$.extend($.datepicker.regional[''], {
 		validateDate: 'Please enter a valid date',
 		validateDateMin: 'Prosím zadajte validný dátum v minulosti vo formáte dd/mm/yyyy',
-		validateDateMax: 'Prosim zadajte validny datum v minulsti vo format dd/mm/yyyy',
+		validateDateMax: 'Prosím zadajte validný dátum v minulosti vo formáte dd/mm/yyyy',
 		validateDateMinMax: 'Please enter a date between {0} and {1}',
 		validateDateCompare: 'Please enter a date {0} {1}',
 		validateDateToday: 'today',
