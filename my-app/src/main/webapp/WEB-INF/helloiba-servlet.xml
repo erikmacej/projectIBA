@@ -35,8 +35,19 @@
 	<property name="basename" value="messages" />        
     </bean>
     
+    <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+	<beans:property name="messageConverters">
+	<beans:list>
+		<beans:ref bean="jsonMessageConverter"/>
+            </beans:list>
+	</beans:property>
+    </beans:bean>
+    
+    <beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    </beans:bean>
+    
     <jdbc:embedded-database id="dataSource" type="DERBY">
-	<jdbc:script location="classpath:database/create.sql" />
+        <jdbc:script location="classpath:database/create.sql" />
     </jdbc:embedded-database>
     
     <!-- Hibernate 4 SessionFactory Bean definition -->
@@ -58,8 +69,6 @@
     <beans:bean id="studentService" class="my.projekt.iba.service.StudentServiceDbImpl">
 	<beans:property name="studentServiceDao" ref="studentServiceDao"></beans:property>
     </beans:bean>
-    
-    <context:component-scan base-package="my.projekt.iba.servlets"/>
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     

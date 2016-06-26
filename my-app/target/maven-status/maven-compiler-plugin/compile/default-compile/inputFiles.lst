@@ -1,6 +1,7 @@
 /home/kisty/NetBeansProjects/projektIBA/my-app/src/main/java/my/projekt/iba/servlets/Servlet.java
 /home/kisty/NetBeansProjects/projektIBA/my-app/src/main/java/my/projekt/iba/service/StudentServiceDao.java
 /home/kisty/NetBeansProjects/projektIBA/my-app/src/main/java/my/projekt/iba/service/StudentServiceDbImpl.java
+/home/kisty/NetBeansProjects/projektIBA/my-app/src/main/java/my/projekt/iba/servlets/StudentServiceRest.java
 /home/kisty/NetBeansProjects/projektIBA/my-app/src/main/java/my/projekt/iba/service/Student.java
 /home/kisty/NetBeansProjects/projektIBA/my-app/src/main/java/my/projekt/iba/service/StudentServiceDbImplDao.java
 /home/kisty/NetBeansProjects/projektIBA/my-app/src/main/java/my/projekt/iba/service/StudentService.java

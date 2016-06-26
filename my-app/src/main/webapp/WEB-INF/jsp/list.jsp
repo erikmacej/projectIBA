@@ -19,6 +19,7 @@
         <table border="1" style="width:60%">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Meno</th>
                     <th>Priezvisko</th>
                     <th>Dátum narodenia</th>
@@ -27,6 +28,7 @@
             </thead>
             <c:forEach items="${students}" var="student">
                 <tr>
+                    <td><c:out value="${student.id}"/></td>
                     <td><c:out value="${student.name}"/></td>
                     <td><c:out value="${student.surname}"/></td>
                     <td><fmt:formatDate pattern="dd.MM.yyyy" value="${student.bornDate}" /></td>

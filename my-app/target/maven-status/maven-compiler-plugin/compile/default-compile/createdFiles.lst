@@ -1,5 +1,6 @@
 my/projekt/iba/service/StudentServiceDbImplDao.class
 my/projekt/iba/service/StudentServiceDao.class
+my/projekt/iba/servlets/StudentServiceRest.class
 my/projekt/iba/service/StudentServiceDbImpl.class
 my/projekt/iba/servlets/Servlet.class
 my/projekt/iba/service/Student.class
